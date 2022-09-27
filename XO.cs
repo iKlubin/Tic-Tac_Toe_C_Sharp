@@ -27,32 +27,12 @@ namespace Game
     {
         const int W = 33;
         const int H = 33;
-        /*
-        const string x1 = @"
-░   ░
- ░ ░ 
-  ░  
- ░ ░ 
-░   ░";
-        const string x2 = @"
-█   █
- █ █ 
-  █  
- █ █ 
-█   █";
-        const string o1 = @"
- ░░░ 
-░   ░
-░   ░
-░   ░
- ░░░ ";
-        const string o2 = @"
- ███ 
-█   █
-█   █
-█   █
- ███ ";
-        */
+        
+        static char[,] x1 = new char[5, 5] { {'░', ' ',  ' ', ' ', '░' }, {' ', '░',  ' ', '░', ' ' }, { ' ', ' ', '░', ' ', ' ' }, {' ', '░',  ' ', '░', ' '}, {'░', ' ', ' ', ' ', '░' } };
+        static char[,] x2 = new char[5, 5] { { '█', ' ', ' ', ' ', '█' }, { ' ', '█', ' ', '█', ' ' }, { ' ', ' ', '█', ' ', ' ' }, { ' ', '█', ' ', '█', ' ' }, { '█', ' ', ' ', ' ', '█' } };
+        static char[,] o1 = new char[5, 5] { { ' ', '░', '░', '░', ' ' }, { '░', ' ', ' ', ' ', '░' }, { '░', ' ', ' ', ' ', '░' }, { '░', ' ', ' ', ' ', '░' }, { ' ', '░', '░', '░', ' ' } };
+        static char[,] o2 = new char[5, 5] { { ' ', '█', '█', '█', ' ' }, { '█', ' ', ' ', ' ', '█' }, { '█', ' ', ' ', ' ', '█' }, { '█', ' ', ' ', ' ', '█' }, { ' ', '█', '█', '█', ' ' } };
+
         static void Start()
         {
             Console.CursorVisible = false;
@@ -64,99 +44,207 @@ namespace Game
         }
         static void setXO(int i, int j, int p, char[,] screen)
         {
-            if(p == 0)
-            {
-                if(i == 0)
-                {
-                    if (j == 0)
-                    {
-                        screen[7, 6] = 'X';
-                    }
-                    else if (j == 1)
-                    {
-                        screen[7, 14] = 'X';
-                    }
-                    else if (j == 2)
-                    {
-                        screen[7, 22] = 'X';
-                    }
-                }
-                else if(i == 1)
-                {
-                    if (j == 0)
-                    {
-                        screen[15, 6] = 'X';
-                    }
-                    else if (j == 1)
-                    {
-                        screen[15, 14] = 'X';
-                    }
-                    else if (j == 2)
-                    {
-                        screen[15, 22] = 'X';
-                    }
-                }
-                else if (i == 2)
-                {
-                    if (j == 0)
-                    {
-                        screen[23, 6] = 'X';
-                    }
-                    else if (j == 1)
-                    {
-                        screen[23, 14] = 'X';
-                    }
-                    else if (j == 2)
-                    {
-                        screen[23, 22] = 'X';
-                    }
-                }
-            }
-            else if(p == 1)
+            if (p == 0)
             {
                 if (i == 0)
                 {
                     if (j == 0)
                     {
-                        screen[7, 6] = 'O';
+                        for(int m = 7; m < 7 + 5; m++)
+                        {
+                            for (int n = 6; n < 6 + 5; n++)
+                            {
+                                screen[m, n] = x2[m - 7, n - 6];
+                            }
+                        }
                     }
                     else if (j == 1)
                     {
-                        screen[7, 14] = 'O';
+                        for (int m = 7; m < 7 + 5; m++)
+                        {
+                            for (int n = 14; n < 14 + 5; n++)
+                            {
+                                screen[m, n] = x2[m - 7, n - 14];
+                            }
+                        }
                     }
                     else if (j == 2)
                     {
-                        screen[7, 22] = 'O';
+                        for (int m = 7; m < 7 + 5; m++)
+                        {
+                            for (int n = 22; n < 22 + 5; n++)
+                            {
+                                screen[m, n] = x2[m - 7, n - 22];
+                            }
+                        }
                     }
                 }
                 else if (i == 1)
                 {
                     if (j == 0)
                     {
-                        screen[15, 6] = 'O';
+                        for (int m = 15; m < 15 + 5; m++)
+                        {
+                            for (int n = 6; n < 6 + 5; n++)
+                            {
+                                screen[m, n] = x2[m - 15, n - 6];
+                            }
+                        }
                     }
                     else if (j == 1)
                     {
-                        screen[15, 14] = 'O';
+                        for (int m = 15; m < 15 + 5; m++)
+                        {
+                            for (int n = 14; n < 14 + 5; n++)
+                            {
+                                screen[m, n] = x2[m - 15, n - 14];
+                            }
+                        }
                     }
                     else if (j == 2)
                     {
-                        screen[15, 22] = 'O';
+                        for (int m = 15; m < 15 + 5; m++)
+                        {
+                            for (int n = 22; n < 22 + 5; n++)
+                            {
+                                screen[m, n] = x2[m - 15, n - 22];
+                            }
+                        }
                     }
                 }
                 else if (i == 2)
                 {
                     if (j == 0)
                     {
-                        screen[23, 6] = 'O';
+                        for (int m = 23; m < 23 + 5; m++)
+                        {
+                            for (int n = 6; n < 6 + 5; n++)
+                            {
+                                screen[m, n] = x2[m - 23, n - 6];
+                            }
+                        }
                     }
                     else if (j == 1)
                     {
-                        screen[23, 14] = 'O';
+                        for (int m = 23; m < 23 + 5; m++)
+                        {
+                            for (int n = 14; n < 14 + 5; n++)
+                            {
+                                screen[m, n] = x2[m - 23, n - 14];
+                            }
+                        }
                     }
                     else if (j == 2)
                     {
-                        screen[23, 22] = 'O';
+                        for (int m = 23; m < 23 + 5; m++)
+                        {
+                            for (int n = 22; n < 22 + 5; n++)
+                            {
+                                screen[m, n] = x2[m - 23, n - 22];
+                            }
+                        }
+                    }
+                }
+            }
+            else if (p == 1)
+            {
+                if (i == 0)
+                {
+                    if (j == 0)
+                    {
+                        for (int m = 7; m < 7 + 5; m++)
+                        {
+                            for (int n = 6; n < 6 + 5; n++)
+                            {
+                                screen[m, n] = o2[m - 7, n - 6];
+                            }
+                        }
+                    }
+                    else if (j == 1)
+                    {
+                        for (int m = 7; m < 7 + 5; m++)
+                        {
+                            for (int n = 14; n < 14 + 5; n++)
+                            {
+                                screen[m, n] = o2[m - 7, n - 14];
+                            }
+                        }
+                    }
+                    else if (j == 2)
+                    {
+                        for (int m = 7; m < 7 + 5; m++)
+                        {
+                            for (int n = 22; n < 22 + 5; n++)
+                            {
+                                screen[m, n] = o2[m - 7, n - 22];
+                            }
+                        }
+                    }
+                }
+                else if (i == 1)
+                {
+                    if (j == 0)
+                    {
+                        for (int m = 15; m < 15 + 5; m++)
+                        {
+                            for (int n = 6; n < 6 + 5; n++)
+                            {
+                                screen[m, n] = o2[m - 15, n - 6];
+                            }
+                        }
+                    }
+                    else if (j == 1)
+                    {
+                        for (int m = 15; m < 15 + 5; m++)
+                        {
+                            for (int n = 14; n < 14 + 5; n++)
+                            {
+                                screen[m, n] = o2[m - 15, n - 14];
+                            }
+                        }
+                    }
+                    else if (j == 2)
+                    {
+                        for (int m = 15; m < 15 + 5; m++)
+                        {
+                            for (int n = 22; n < 22 + 5; n++)
+                            {
+                                screen[m, n] = o2[m - 15, n - 22];
+                            }
+                        }
+                    }
+                }
+                else if (i == 2)
+                {
+                    if (j == 0)
+                    {
+                        for (int m = 23; m < 23 + 5; m++)
+                        {
+                            for (int n = 6; n < 6 + 5; n++)
+                            {
+                                screen[m, n] = o2[m - 23, n - 6];
+                            }
+                        }
+                    }
+                    else if (j == 1)
+                    {
+                        for (int m = 23; m < 23 + 5; m++)
+                        {
+                            for (int n = 14; n < 14 + 5; n++)
+                            {
+                                screen[m, n] = o2[m - 23, n - 14];
+                            }
+                        }
+                    }
+                    else if (j == 2)
+                    {
+                        for (int m = 23; m < 23 + 5; m++)
+                        {
+                            for (int n = 22; n < 22 + 5; n++)
+                            {
+                                screen[m, n] = o2[m - 23, n - 22];
+                            }
+                        }
                     }
                 }
             }
@@ -171,21 +259,27 @@ namespace Game
                     screen[i, j] = map[i * H + j];
                 }
             }
-            for(int i = 0; i < 3; i++)
+            for (int i = 0; i < 3; i++)
             {
-                for(int j = 0; j < 3; j++)
+                for (int j = 0; j < 3; j++)
                 {
                     if (field[i, j] == 0)
                     {
                         setXO(i, j, 0, screen);
                     }
-                    else if(field[i, j] == 1)
+                    else if (field[i, j] == 1)
                     {
                         setXO(i, j, 1, screen);
                     }
                 }
             }
-            screen[cursor.x * 8 + 7, cursor.y * 8 + 6] = '*';
+            for (int m = cursor.x * 8 + 7; m < (cursor.x * 8 + 7 + 5); m++)
+            {
+                for (int n = cursor.y * 8 + 6; n < (cursor.y * 8 + 6 + 5); n++)
+                {
+                    screen[m, n] = o1[m - (cursor.x * 8 + 7), n - (cursor.y * 8 + 6)];
+                }
+            }
             for (int i = 0; i < W; i++)
             {
                 for (int j = 0; j < H; j++)
@@ -197,11 +291,11 @@ namespace Game
         static void WinScreen(int win)
         {
             Console.Clear();
-            if(win == 0)
+            if (win == 0)
             {
                 Console.WriteLine("O Выйграл!");
             }
-            else if(win == 1)
+            else if (win == 1)
             {
                 Console.WriteLine("X Выйграл!");
             }
@@ -213,18 +307,18 @@ namespace Game
         static bool Win(int queue, int?[,] field)
         {
             bool a = false;
-            for(int i = 0; i < 3; i++)
+            for (int i = 0; i < 3; i++)
             {
                 for (int j = 0; j < 3; j++)
                 {
-                    if(field[i, j] == null)
+                    if (field[i, j] == null)
                     {
-                        a = false;
+                        a = true;
                         break;
                     }
                 }
             }
-            if (a)
+            if (!a)
             {
                 WinScreen(3);
                 return true;
@@ -353,9 +447,9 @@ namespace Game
             int queue = random.Next(2);
             Cursor cursor = new Cursor();
             Start();
-            while(true)
+            while (true)
             {
-                if(queue == 0)
+                if (queue == 0)
                 {
                     int xR, yR;
                     do
@@ -366,7 +460,7 @@ namespace Game
                     field[xR, yR] = queue;
                     queue++;
                     Window(screen, map, field, cursor, queue);
-                    Thread.Sleep(750);
+                    Thread.Sleep(500);
                     continue;
                 }
                 else
@@ -374,7 +468,7 @@ namespace Game
                     ConsoleKey key = Console.ReadKey(true).Key;
                     switch (key)
                     {
-                        case ConsoleKey.LeftArrow: if (cursor.y > 0) { cursor.y--; } ; break;
+                        case ConsoleKey.LeftArrow: if (cursor.y > 0) { cursor.y--; }; break;
                         case ConsoleKey.UpArrow: if (cursor.x > 0) { cursor.x--; }; break;
                         case ConsoleKey.RightArrow: if (cursor.y < 2) { cursor.y++; }; break;
                         case ConsoleKey.DownArrow: if (cursor.x < 2) { cursor.x++; }; break;
@@ -382,12 +476,12 @@ namespace Game
                         default: continue;
                     }
                 }
-                if(Win(queue, field))
+                if (Win(queue, field))
                 {
                     break;
                 }
                 Window(screen, map, field, cursor, queue);
             }
-		}
-	}
+        }
+    }
 }
